@@ -3,19 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Blog</title>
+    <title>Velvet Hearts | Deep Love Stories & Soulful Advice</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #8B0000;
+            --secondary: #DDA0DD;
+            --accent: #FF69B4;
+            --dark: #2C1810;
+            --light: #F8F1F1;
+            --shadow: rgba(139, 0, 0, 0.3);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background: linear-gradient(135deg, #1a0d0d 0%, #2d1b1b 50%, #3a2a2a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
         }
 
         .container {
@@ -23,102 +58,170 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+            gap: 3rem;
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         header {
             grid-column: 1 / -1;
             text-align: center;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 5rem 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            border-radius: 12px;
-            margin-bottom: 2rem;
+            border-radius: 25px;
+            margin-bottom: 3rem;
+            box-shadow: 0 30px 60px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
             font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            position: relative;
         }
 
         header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .main-content {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .blog-post {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(248,241,241,0.7));
+            border-radius: 20px;
+            box-shadow: 0 20px 40px var(--shadow);
+            border-left: 6px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
         }
 
-        .blog-post:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+        .blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        }
+
+        .blog-post:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 70px var(--shadow);
+        }
+
+        .post-rose {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+            opacity: 0.8;
         }
 
         .blog-post h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            cursor: pointer;
-        }
-
-        .blog-post h2:hover {
-            color: #667eea;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
         }
 
         .post-meta {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .blog-post p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+            font-style: italic;
         }
 
-        .read-more {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .read-more:hover {
-            border-bottom-color: #667eea;
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-style: italic;
+            text-align: right;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(139,0,0,0.2);
         }
 
         .sidebar {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
             height: fit-content;
             position: sticky;
-            top: 2rem;
+            top: 3rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .sidebar h3 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #667eea;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 1.6rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary);
+            text-align: center;
+            position: relative;
+        }
+
+        .sidebar h3::after {
+            content: '✨';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .sidebar ul {
@@ -126,140 +229,177 @@
         }
 
         .sidebar li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .sidebar a {
-            color: #555;
+            color: #666;
             text-decoration: none;
             font-weight: 500;
-            display: block;
-            padding: 0.5rem 0;
-            border-left: 3px solid transparent;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            font-size: 1.1rem;
+            border: 1px solid transparent;
         }
 
         .sidebar a:hover {
-            color: #667eea;
-            border-left-color: #667eea;
-            padding-left: 1rem;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px var(--shadow);
         }
 
         .hero-section {
             grid-column: 1 / -1;
-            background: white;
-            border-radius: 12px;
-            padding: 3rem 2rem;
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 4rem 3rem;
             text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            box-shadow: 0 30px 60px var(--shadow);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
         }
 
         .hero-section h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
         }
 
         .hero-section p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.4rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .golden-quote {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.6rem;
+            font-style: italic;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
-                padding: 1rem;
-                gap: 1.5rem;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .main-content, .sidebar {
                 padding: 1.5rem;
+                gap: 2rem;
             }
-        }
-
-        .post-date {
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1rem;
+            header h1 { font-size: 3rem; }
+            .hero-section h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
+    <div class="stars" id="stars"></div>
+    
     <div class="container">
         <header>
-            <h1>🚀 My Awesome Blog</h1>
-            <p>Sharing knowledge, insights, and stories from the world of tech and beyond</p>
+            <h1>Velvet Hearts</h1>
+            <p>Where souls collide, hearts entwine, and love reveals its deepest truths</p>
         </header>
 
         <main class="main-content">
-            <!-- Hero Section -->
             <section id="hero" class="hero-section">
-                <h2>Welcome to My Blog!</h2>
-                <p>Discover amazing content about web development, design, productivity, and everything in between. Scroll down to read my latest posts or use the sidebar to jump to specific sections.</p>
+                <h2>🌹 The Art of Eternal Love</h2>
+                <p>These are not fleeting romances. These are the stories that burn through time—passionate, raw, transformative. Love that reshapes souls and defies the ordinary.</p>
+                <div class="golden-quote">
+                    "Love is not about finding the right person, but creating a right relationship. It's not destruction, but protection. We must learn not only to live together but also to live intensely together."
+                    <br><strong>— François Mauriac</strong>
+                </div>
             </section>
 
-            <!-- Blog Post 1 -->
             <article id="post-1" class="blog-post">
-                <div class="post-date">December 15, 2024</div>
-                <h2>Building Responsive Websites with Modern CSS Grid</h2>
-                <div class="post-meta">Web Development • CSS • Layout</div>
-                <p>CSS Grid has revolutionized the way we build layouts for the web. No longer do we need complex frameworks or endless flexbox hacks. With just a few lines of CSS, you can create complex, responsive layouts that work perfectly across all devices.</p>
-                <p>In this post, we'll explore the power of CSS Grid through practical examples. From simple two-column layouts to complex magazine-style designs, you'll learn how to harness the full potential of this game-changing technology.</p>
-                <p>Key takeaways include: mastering grid-template-areas, creating responsive navigation menus, and building full-page layouts that adapt seamlessly to any screen size. Whether you're a beginner or seasoned developer, CSS Grid will transform your workflow.</p>
-                <p><a href="#post-1" class="read-more">↑ Back to top</a></p>
+                <span class="post-rose">🌹</span>
+                <h2>The Night I Understood Soulmates Exist</h2>
+                <div class="post-meta">
+                    <span>✨ Elena Voss</span>
+                    <span>•</span>
+                    <span>December 22nd</span>
+                </div>
+                <p>It wasn't fireworks or butterflies. It was quieter, deeper—a recognition. His hand brushed mine across a crowded room, and suddenly the noise vanished. I knew his soul before I knew his name.</p>
+                <p>We spent hours that night not speaking, just existing in perfect silence. His presence filled every empty space I'd carried for years. When he finally spoke, his voice was the echo of dreams I'd forgotten I had.</p>
+                <p>Three years later, we're still unraveling each other. Soulmates aren't found—they're remembered.</p>
+                <div class="signature">- E.V.</div>
             </article>
 
-            <!-- Blog Post 2 -->
             <article id="post-2" class="blog-post">
-                <div class="post-date">December 10, 2024</div>
-                <h2>10 Productivity Hacks Every Developer Should Know</h2>
-                <div class="post-meta">Productivity • Developer Tools • Workflow</div>
-                <p>Being a developer isn't just about writing code—it's about writing the right code efficiently. These 10 productivity hacks have dramatically improved my workflow and helped me deliver better results in less time.</p>
-                <p>From keyboard shortcuts that save hours each week to VS Code extensions that automate repetitive tasks, these tips are battle-tested and ready for you to implement immediately. My personal favorite? Using multiple cursors to edit multiple lines simultaneously!</p>
-                <p>Bonus: I'll share my complete VS Code settings.json file that you can copy-paste into your own setup. Start implementing these today and watch your productivity soar.</p>
-                <p><a href="#post-2" class="read-more">↑ Back to top</a></p>
+                <span class="post-rose">🌹</span>
+                <h2>Why Vulnerability Is Love's Greatest Weapon</h2>
+                <div class="post-meta">
+                    <span>✨ Marcus Hale</span>
+                    <span>•</span>
+                    <span>December 18th</span>
+                </div>
+                <p>I told her my darkest secret on our third date—the one that ended my last engagement. She didn't run. She leaned closer. "Thank you," she whispered, "for trusting me with your shadows."</p>
+                <p>That moment taught me: True love thrives in vulnerability, not perfection. She shared hers too—a wound so deep it stole my breath. Our brokenness became our bond.</p>
+                <p>Two years later, our love is battle-tested, beautifully scarred, and unbreakable.</p>
+                <div class="signature">- M.H.</div>
             </article>
 
-            <!-- Blog Post 3 -->
             <article id="post-3" class="blog-post">
-                <div class="post-date">December 5, 2024</div>
-                <h2>The Future of Web Design: Trends for 2025</h2>
-                <div class="post-meta">Design • UI/UX • Trends</div>
-                <p>Web design is evolving faster than ever. As we approach 2025, several key trends are emerging that will define the next generation of digital experiences. Glassmorphism, organic shapes, and micro-interactions are just the beginning.</p>
-                <p>Learn how to implement these trends using modern CSS techniques and JavaScript libraries. I'll share specific code examples and design systems you can use immediately in your projects. Stay ahead of the curve and create websites that wow your users.</p>
-                <p>Pro tip: Combine these trends with performance optimization techniques to create lightning-fast, beautiful websites that rank higher in search results and convert better.</p>
-                <p><a href="#post-3" class="read-more">↑ Back to top</a></p>
+                <span class="post-rose">🌹</span>
+                <h2>The Silent Language of Lifelong Lovers</h2>
+                <div class="post-meta">
+                    <span>✨ Sophia Laurent</span>
+                    <span>•</span>
+                    <span>December 14th</span>
+                </div>
+                <p>After 27 years, we barely speak anymore. Not because passion faded, but because it evolved. He knows when I need space by the way I hold my coffee. I know he's worried by the crease in his left brow.</p>
+                <p>Our love speaks through glances, touches, silences. Last night he placed my favorite book on my nightstand—no note, no words. I smiled. He smiled back. We understood.</p>
+                <p>The deepest love needs no language. It simply <em>is</em>.</p>
+                <div class="signature">- S.L.</div>
             </article>
         </main>
 
         <aside class="sidebar">
-            <h3>📋 Navigation</h3>
+            <h3>Navigation</h3>
             <ul>
-                <li><a href="#hero">🏠 Welcome</a></li>
-                <li><a href="#post-1">📱 CSS Grid</a></li>
-                <li><a href="#post-2">⚡ Productivity</a></li>
-                <li><a href="#post-3">🎨 Web Design Trends</a></li>
+                <li><a href="#hero">✨ Eternal Love</a></li>
+                <li><a href="#post-1">🌹 Soulmates</a></li>
+                <li><a href="#post-2">💔 Vulnerability</a></li>
+                <li><a href="#post-3">∞ Lifelong Love</a></li>
             </ul>
             
-            <h3 style="margin-top: 2rem;">📊 Quick Stats</h3>
-            <ul style="font-size: 0.95rem;">
-                <li>👨‍💻 50+ Posts</li>
-                <li>⭐ 1K+ Readers</li>
-                <li>🚀 Updated Weekly</li>
-            </ul>
+            <h3>Our Journey</h3>
+            <div style="text-align: center; color: var(--primary); font-size: 1.2rem; font-style: italic;">
+                <div>1,247 Stories Shared</div>
+                <div>89,342 Hearts Touched</div>
+                <div>27 Years of Passion</div>
+            </div>
         </aside>
     </div>
+
+    <script>
+        // Twinkling stars effect (tiny, lightweight)
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for(let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
 </body>
 </html>
